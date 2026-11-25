@@ -1,0 +1,25 @@
+entity: Customer
+description: Customer master data
+attributes:
+  - name: CustomerId
+    type: identifier
+    required: true
+    primary_key: true
+    description: unique identifier for a customer
+  - name: CustomerName
+    type: text
+    length: 200
+  - name: CountryCode
+    type: text
+    length: 10
+    required: true
+
+relationships:
+  - entity: Order
+    type: one-to-many
+    source_attribute: CustomerId
+    target_attribute: CustomerId
+  - entity: Country
+    type: many-to-one
+    source_attribute: CountryCode
+    target_attribute: CountryCode

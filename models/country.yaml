@@ -1,0 +1,13 @@
+entity: Country
+description: Country lookup table
+attributes:
+  - name: CountryCode
+    type: text
+    length: 10
+    required: true
+    primary_key: true
+  - name: CountryName
+    type: text
+    length: 100
+
+relationships: []

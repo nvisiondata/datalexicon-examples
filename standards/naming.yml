@@ -1,0 +1,12 @@
+case: upper_snake
+max_identifier_length: 30
+naming:
+  primary_key:
+    prefix: PK_
+    suffix: _PK
+  foreign_key:
+    prefix: FK_
+    suffix: _FK
+  index:
+    prefix: IX_
+    suffix: _IDX
