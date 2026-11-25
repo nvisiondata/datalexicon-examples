@@ -36,12 +36,14 @@ Validate the models and regenerate SQL for the selected dialects after making
 changes:
 
 ```shell
-datalexicon validate
-datalexicon build
+datalexicon validate models/customer.yaml
+datalexicon build .
 ```
 
 Generated SQL is written under `target/`, in a directory for each selected
 dialect.
+Running `datalexicon docs .` creates the generated documentation under
+`target/documentation/`.
 
 ## DataLexicon resources
 
