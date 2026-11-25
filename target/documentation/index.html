@@ -1,0 +1,3680 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"/>
+
+<title>
+Schema Documentation
+</title>
+
+<style>
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;}
+.header{height:70px;padding:0 30px;border-bottom:1px solid #ddd;display:flex;align-items:center;}
+.container{display:flex;height:calc(100vh - 70px);}
+.sidebar{width:320px;overflow-y:auto;border-right:1px solid #ddd;padding:20px;box-sizing:border-box;}
+.content{flex:1;overflow-y:auto;padding:40px;}
+.folder{font-weight:bold;margin-top:25px;font-size:18px;}
+.folder-sub{font-weight:bold;margin-top:15px;margin-left:10px;}
+.nav-item{padding:8px;cursor:pointer;border-radius:5px;}
+.nav-indent{margin-left:20px;}
+.nav-item:hover{background:#f5f5f5;}
+.content-page{display:none;}
+.content-page.active{display:block;}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:10px;border-bottom:1px solid #ddd;text-align:left;}
+pre{background:#fafafa;padding:20px;overflow-x:auto;border-radius:5px;}
+.mermaid{padding:20px;}
+</style>
+
+<script>
+function showContent(id){
+    document
+        .querySelectorAll('.content-page')
+        .forEach(
+            p => p.classList.remove('active')
+        );
+
+    document
+        .getElementById(id)
+        .classList.add('active');
+}
+</script>
+
+<script type="module">
+import mermaid from
+'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+mermaid.initialize({
+    startOnLoad:true
+});
+</script>
+<style>
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+.header h1 {
+    margin: 0;
+}
+.logo {
+    width: 250px;
+    height: auto;
+}
+</style>
+</head>
+
+<body onload="showContent('erd')">
+
+<div class="header">
+<img src="https://nvisiondata.be/assets/img/datalexicon/icon-original.png" alt="DataLexicon Logo" class="logo">
+<h1>
+Schema Documentation
+</h1>
+</div>
+
+
+<div class="container">
+
+<div class="sidebar">
+
+<div class="folder"
+        onclick="showContent('erd')">
+        Entity Relationship Diagram
+</div>
+
+<div class="folder">
+Lexicon
+</div>
+
+
+            <div class="nav-item"
+                onclick="showContent('abbreviations')">
+                Abbreviations
+            </div>
+            
+            <div class="nav-item"
+                onclick="showContent('glossary')">
+                Glossary
+            </div>
+            
+
+<div class="folder">
+Logical Entities
+</div>
+
+
+            <div class="nav-item"
+                 onclick="showContent('logical-country')">
+                 Country
+            </div>
+            
+            <div class="nav-item"
+                 onclick="showContent('logical-customer')">
+                 Customer
+            </div>
+            
+            <div class="nav-item"
+                 onclick="showContent('logical-product')">
+                 Product
+            </div>
+            
+            <div class="nav-item"
+                 onclick="showContent('logical-salesorder')">
+                 SalesOrder
+            </div>
+            
+            <div class="nav-item"
+                 onclick="showContent('logical-salesorderline')">
+                 SalesOrderLine
+            </div>
+            
+
+
+<div class="folder">
+Physical Entities
+</div>
+
+
+            <div class="folder-sub">
+                Postgres
+            </div>
+            
+                <div class="nav-item nav-indent"
+                     onclick="showContent('postgres-country')">
+                     Country
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('postgres-customer')">
+                     Customer
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('postgres-product')">
+                     Product
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('postgres-salesorder')">
+                     SalesOrder
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('postgres-salesorderline')">
+                     SalesOrderLine
+                </div>
+                
+            <div class="folder-sub">
+                Oracle
+            </div>
+            
+                <div class="nav-item nav-indent"
+                     onclick="showContent('oracle-country')">
+                     Country
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('oracle-customer')">
+                     Customer
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('oracle-product')">
+                     Product
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('oracle-salesorder')">
+                     SalesOrder
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('oracle-salesorderline')">
+                     SalesOrderLine
+                </div>
+                
+            <div class="folder-sub">
+                Sqlserver
+            </div>
+            
+                <div class="nav-item nav-indent"
+                     onclick="showContent('sqlserver-country')">
+                     Country
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('sqlserver-customer')">
+                     Customer
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('sqlserver-product')">
+                     Product
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('sqlserver-salesorder')">
+                     SalesOrder
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('sqlserver-salesorderline')">
+                     SalesOrderLine
+                </div>
+                
+            <div class="folder-sub">
+                Snowflake
+            </div>
+            
+                <div class="nav-item nav-indent"
+                     onclick="showContent('snowflake-country')">
+                     Country
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('snowflake-customer')">
+                     Customer
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('snowflake-product')">
+                     Product
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('snowflake-salesorder')">
+                     SalesOrder
+                </div>
+                
+                <div class="nav-item nav-indent"
+                     onclick="showContent('snowflake-salesorderline')">
+                     SalesOrderLine
+                </div>
+                
+
+</div>
+
+
+<div class="content">
+
+
+            <div class="content-page" id="logical-country">
+                <h2>Country</h2>
+
+                <p>
+                Country lookup table
+                </p>
+
+                <h3>Attributes</h3>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Primary Key</th>
+                    </tr>
+                    
+            <tr>
+                <td>CountryCode</td>
+                <td></td>
+                <td>text</td>
+                <td>True</td>
+                <td>True</td>
+            </tr>
+            
+            <tr>
+                <td>CountryName</td>
+                <td></td>
+                <td>text</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+                </table>
+
+                <h3>Relationships</h3>
+                <table>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Type</th>
+                    </tr>
+                    
+            <tr>
+                <td>Customer</td>
+                <td>one-to-many</td>
+            </tr>
+            
+            <tr>
+                <td>SalesOrder</td>
+                <td>one-to-many</td>
+            </tr>
+            
+                </table>
+            </div>
+            
+            <div class="content-page" id="logical-customer">
+                <h2>Customer</h2>
+
+                <p>
+                Customer master data
+                </p>
+
+                <h3>Attributes</h3>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Primary Key</th>
+                    </tr>
+                    
+            <tr>
+                <td>CustomerId</td>
+                <td>unique identifier for a customer</td>
+                <td>identifier</td>
+                <td>True</td>
+                <td>True</td>
+            </tr>
+            
+            <tr>
+                <td>CustomerName</td>
+                <td></td>
+                <td>text</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>EmailAddress</td>
+                <td></td>
+                <td>text</td>
+                <td>False</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>CountryCode</td>
+                <td></td>
+                <td>text</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>CreatedAt</td>
+                <td></td>
+                <td>datetime</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+                </table>
+
+                <h3>Relationships</h3>
+                <table>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Type</th>
+                    </tr>
+                    
+            <tr>
+                <td>SalesOrder</td>
+                <td>one-to-many</td>
+            </tr>
+            
+            <tr>
+                <td>Country</td>
+                <td>many-to-one</td>
+            </tr>
+            
+                </table>
+            </div>
+            
+            <div class="content-page" id="logical-product">
+                <h2>Product</h2>
+
+                <p>
+                Product catalogue
+                </p>
+
+                <h3>Attributes</h3>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Primary Key</th>
+                    </tr>
+                    
+            <tr>
+                <td>ProductId</td>
+                <td>unique identifier for a product</td>
+                <td>identifier</td>
+                <td>True</td>
+                <td>True</td>
+            </tr>
+            
+            <tr>
+                <td>SKU</td>
+                <td></td>
+                <td>text</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>ProductName</td>
+                <td></td>
+                <td>text</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>ProductStatus</td>
+                <td></td>
+                <td>text</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+                </table>
+
+                <h3>Relationships</h3>
+                <table>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Type</th>
+                    </tr>
+                    
+            <tr>
+                <td>SalesOrderLine</td>
+                <td>one-to-many</td>
+            </tr>
+            
+                </table>
+            </div>
+            
+            <div class="content-page" id="logical-salesorder">
+                <h2>SalesOrder</h2>
+
+                <p>
+                Sales order header
+                </p>
+
+                <h3>Attributes</h3>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Primary Key</th>
+                    </tr>
+                    
+            <tr>
+                <td>SalesOrderId</td>
+                <td>unique identifier for a sales order</td>
+                <td>identifier</td>
+                <td>True</td>
+                <td>True</td>
+            </tr>
+            
+            <tr>
+                <td>OrderDate</td>
+                <td></td>
+                <td>datetime</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>CustomerId</td>
+                <td></td>
+                <td>identifier</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>OrderStatus</td>
+                <td></td>
+                <td>text</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>ShippingCountryCode</td>
+                <td></td>
+                <td>text</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+                </table>
+
+                <h3>Relationships</h3>
+                <table>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Type</th>
+                    </tr>
+                    
+            <tr>
+                <td>Customer</td>
+                <td>many-to-one</td>
+            </tr>
+            
+            <tr>
+                <td>Country</td>
+                <td>many-to-one</td>
+            </tr>
+            
+            <tr>
+                <td>SalesOrderLine</td>
+                <td>one-to-many</td>
+            </tr>
+            
+                </table>
+            </div>
+            
+            <div class="content-page" id="logical-salesorderline">
+                <h2>SalesOrderLine</h2>
+
+                <p>
+                Product and purchase details captured on a sales order
+                </p>
+
+                <h3>Attributes</h3>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Primary Key</th>
+                    </tr>
+                    
+            <tr>
+                <td>SalesOrderLineId</td>
+                <td>unique identifier for a sales order line</td>
+                <td>identifier</td>
+                <td>True</td>
+                <td>True</td>
+            </tr>
+            
+            <tr>
+                <td>SalesOrderId</td>
+                <td></td>
+                <td>identifier</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>ProductId</td>
+                <td></td>
+                <td>identifier</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>LineNumber</td>
+                <td></td>
+                <td>integer</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>Quantity</td>
+                <td></td>
+                <td>integer</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+            <tr>
+                <td>UnitPrice</td>
+                <td></td>
+                <td>decimal</td>
+                <td>True</td>
+                <td>False</td>
+            </tr>
+            
+                </table>
+
+                <h3>Relationships</h3>
+                <table>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Type</th>
+                    </tr>
+                    
+            <tr>
+                <td>SalesOrder</td>
+                <td>many-to-one</td>
+            </tr>
+            
+            <tr>
+                <td>Product</td>
+                <td>many-to-one</td>
+            </tr>
+            
+                </table>
+            </div>
+            
+        <div class="content-page" id="erd">
+            <h2>Entity Relationship Diagram</h2>
+            <div class="mermaid">
+            erDiagram
+    Country {
+        text CountryCode PK
+        text CountryName
+    }
+    Customer {
+        identifier CustomerId PK
+        text CustomerName
+        text EmailAddress
+        text CountryCode
+        datetime CreatedAt
+    }
+    Product {
+        identifier ProductId PK
+        text SKU
+        text ProductName
+        text ProductStatus
+    }
+    SalesOrder {
+        identifier SalesOrderId PK
+        datetime OrderDate
+        identifier CustomerId
+        text OrderStatus
+        text ShippingCountryCode
+    }
+    SalesOrderLine {
+        identifier SalesOrderLineId PK
+        identifier SalesOrderId
+        identifier ProductId
+        integer LineNumber
+        integer Quantity
+        decimal UnitPrice
+    }
+    Country ||--o{ Customer : places
+    Country ||--o{ SalesOrder : places
+    Customer ||--o{ SalesOrder : places
+    Country ||--o{ Customer : has
+    Product ||--o{ SalesOrderLine : places
+    Customer ||--o{ SalesOrder : has
+    Country ||--o{ SalesOrder : has
+    SalesOrder ||--o{ SalesOrderLine : places
+    SalesOrder ||--o{ SalesOrderLine : has
+    Product ||--o{ SalesOrderLine : has
+            </div>
+        </div>
+        
+            <div class="content-page" id="abbreviations">
+
+                <h2>Abbreviations</h2>
+
+                <table>
+
+                    <tr>
+                        <th>Term</th>
+                        <th>Abbreviation</th>
+                    </tr>
+
+                    
+            <tr>
+                <td>Customer</td>
+                <td>CUST</td>
+            </tr>
+            
+            <tr>
+                <td>Number</td>
+                <td>NBR</td>
+            </tr>
+            
+            <tr>
+                <td>Identifier</td>
+                <td>ID</td>
+            </tr>
+            
+            <tr>
+                <td>Order</td>
+                <td>ORD</td>
+            </tr>
+            
+            <tr>
+                <td>Line</td>
+                <td>LINE</td>
+            </tr>
+            
+            <tr>
+                <td>Product</td>
+                <td>PROD</td>
+            </tr>
+            
+            <tr>
+                <td>Quantity</td>
+                <td>QTY</td>
+            </tr>
+            
+            <tr>
+                <td>Price</td>
+                <td>PRC</td>
+            </tr>
+            
+            <tr>
+                <td>Country</td>
+                <td>CTRY</td>
+            </tr>
+            
+            <tr>
+                <td>Code</td>
+                <td>CD</td>
+            </tr>
+            
+            <tr>
+                <td>Status</td>
+                <td>STAT</td>
+            </tr>
+            
+            <tr>
+                <td>Date</td>
+                <td>DT</td>
+            </tr>
+            
+
+                </table>
+
+            </div>
+            
+            <div class="content-page" id="glossary">
+
+                <h2>Glossary</h2>
+
+                <table>
+
+                    <tr>
+                        <th>Term</th>
+                        <th>Description</th>
+                    </tr>
+
+                    
+            <tr>
+                <td>Customer</td>
+                <td>A person or organization that places sales orders</td>
+            </tr>
+            
+            <tr>
+                <td>Country</td>
+                <td>A country identified by its two-letter country code</td>
+            </tr>
+            
+            <tr>
+                <td>Product</td>
+                <td>An item available for sale</td>
+            </tr>
+            
+            <tr>
+                <td>SalesOrder</td>
+                <td>A customer&#x27;s request to purchase products</td>
+            </tr>
+            
+            <tr>
+                <td>SalesOrderLine</td>
+                <td>A product, quantity, and price recorded on a sales order</td>
+            </tr>
+            
+
+                </table>
+
+            </div>
+            
+                <div class="content-page"
+                    id="postgres-country">
+
+                    <h2>
+                    Country
+                    (Postgres)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        CTRY
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>TEXT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_NAME</td>
+                    <td>TEXT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        CTRY_CD
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        CUST
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        SALES_ORD
+                        (SHIPPING_CTRY_CD)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_CTRY_CUST</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_CTRY_SALES_ORD</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE CTRY (
+    CTRY_CD TEXT NOT NULL,
+    CTRY_NAME TEXT NOT NULL,
+    CONSTRAINT PK_CTRY PRIMARY KEY (CTRY_CD),
+    CONSTRAINT FK_CTRY_CUST FOREIGN KEY (CTRY_CD) REFERENCES CUST(CTRY_CD),
+    CONSTRAINT FK_CTRY_SALES_ORD FOREIGN KEY (CTRY_CD) REFERENCES SALES_ORD(SHIPPING_CTRY_CD)
+);
+COMMENT ON TABLE CTRY IS &#x27;Country lookup table&#x27;;
+CREATE INDEX IDX_CTRY_CUST ON CTRY(CTRY_CD);
+CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="postgres-customer">
+
+                    <h2>
+                    Customer
+                    (Postgres)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        CUST
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CUST_NAME</td>
+                    <td>TEXT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>EMAIL_ADDRESS</td>
+                    <td>TEXT</td>
+                    <td>
+                        NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>TEXT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CREATED_AT</td>
+                    <td>TIMESTAMP</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        CUST_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>
+                        SALES_ORD
+                        (CUST_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        CTRY
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_CUST_SALES_ORD</td>
+                    <td>CUST_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_CUST_CTRY</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE CUST (
+    CUST_ID BIGINT NOT NULL,
+    CUST_NAME TEXT NOT NULL,
+    EMAIL_ADDRESS TEXT,
+    CTRY_CD TEXT NOT NULL,
+    CREATED_AT TIMESTAMP NOT NULL,
+    CONSTRAINT PK_CUST PRIMARY KEY (CUST_ID),
+    CONSTRAINT FK_CUST_SALES_ORD FOREIGN KEY (CUST_ID) REFERENCES SALES_ORD(CUST_ID),
+    CONSTRAINT FK_CUST_CTRY FOREIGN KEY (CTRY_CD) REFERENCES CTRY(CTRY_CD)
+);
+COMMENT ON TABLE CUST IS &#x27;Customer master data&#x27;;
+COMMENT ON COLUMN CUST.CUST_ID IS &#x27;unique identifier for a customer&#x27;;
+CREATE INDEX IDX_CUST_SALES_ORD ON CUST(CUST_ID);
+CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="postgres-product">
+
+                    <h2>
+                    Product
+                    (Postgres)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        PROD
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SKU</td>
+                    <td>TEXT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_NAME</td>
+                    <td>TEXT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_STAT</td>
+                    <td>TEXT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        PROD_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>
+                        SALES_ORD_LINE
+                        (PROD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_PROD_SALES_ORD_LINE</td>
+                    <td>PROD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE PROD (
+    PROD_ID BIGINT NOT NULL,
+    SKU TEXT NOT NULL,
+    PROD_NAME TEXT NOT NULL,
+    PROD_STAT TEXT NOT NULL,
+    CONSTRAINT PK_PROD PRIMARY KEY (PROD_ID),
+    CONSTRAINT FK_PROD_SALES_ORD_LINE FOREIGN KEY (PROD_ID) REFERENCES SALES_ORD_LINE(PROD_ID)
+);
+COMMENT ON TABLE PROD IS &#x27;Product catalogue&#x27;;
+COMMENT ON COLUMN PROD.PROD_ID IS &#x27;unique identifier for a product&#x27;;
+CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="postgres-salesorder">
+
+                    <h2>
+                    SalesOrder
+                    (Postgres)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        SALES_ORD
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>ORD_DT</td>
+                    <td>TIMESTAMP</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>ORD_STAT</td>
+                    <td>TEXT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SHIPPING_CTRY_CD</td>
+                    <td>TEXT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        SALES_ORD_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>
+                        CUST
+                        (CUST_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SHIPPING_CTRY_CD</td>
+                    <td>
+                        CTRY
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>
+                        SALES_ORD_LINE
+                        (SALES_ORD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_SALES_ORD_CUST</td>
+                    <td>CUST_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_CTRY</td>
+                    <td>SHIPPING_CTRY_CD</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_SALES_ORD_LINE</td>
+                    <td>SALES_ORD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE SALES_ORD (
+    SALES_ORD_ID BIGINT NOT NULL,
+    ORD_DT TIMESTAMP NOT NULL,
+    CUST_ID BIGINT NOT NULL,
+    ORD_STAT TEXT NOT NULL,
+    SHIPPING_CTRY_CD TEXT NOT NULL,
+    CONSTRAINT PK_SALES_ORD PRIMARY KEY (SALES_ORD_ID),
+    CONSTRAINT FK_SALES_ORD_CUST FOREIGN KEY (CUST_ID) REFERENCES CUST(CUST_ID),
+    CONSTRAINT FK_SALES_ORD_CTRY FOREIGN KEY (SHIPPING_CTRY_CD) REFERENCES CTRY(CTRY_CD),
+    CONSTRAINT FK_SALES_ORD_SALES_ORD_LINE FOREIGN KEY (SALES_ORD_ID) REFERENCES SALES_ORD_LINE(SALES_ORD_ID)
+);
+COMMENT ON TABLE SALES_ORD IS &#x27;Sales order header&#x27;;
+COMMENT ON COLUMN SALES_ORD.SALES_ORD_ID IS &#x27;unique identifier for a sales order&#x27;;
+CREATE INDEX IDX_SALES_ORD_CUST ON SALES_ORD(CUST_ID);
+CREATE INDEX IDX_SALES_ORD_CTRY ON SALES_ORD(SHIPPING_CTRY_CD);
+CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="postgres-salesorderline">
+
+                    <h2>
+                    SalesOrderLine
+                    (Postgres)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        SALES_ORD_LINE
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_LINE_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>LINE_NBR</td>
+                    <td>INTEGER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>QTY</td>
+                    <td>INTEGER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>UNIT_PRC</td>
+                    <td>TEXT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        SALES_ORD_LINE_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>
+                        SALES_ORD
+                        (SALES_ORD_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>
+                        PROD
+                        (PROD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_SALES_ORD_LINE_SALES_ORD</td>
+                    <td>SALES_ORD_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_LINE_PROD</td>
+                    <td>PROD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE SALES_ORD_LINE (
+    SALES_ORD_LINE_ID BIGINT NOT NULL,
+    SALES_ORD_ID BIGINT NOT NULL,
+    PROD_ID BIGINT NOT NULL,
+    LINE_NBR INTEGER NOT NULL,
+    QTY INTEGER NOT NULL,
+    UNIT_PRC TEXT NOT NULL,
+    CONSTRAINT PK_SALES_ORD_LINE PRIMARY KEY (SALES_ORD_LINE_ID),
+    CONSTRAINT FK_SALES_ORD_LINE_SALES_ORD FOREIGN KEY (SALES_ORD_ID) REFERENCES SALES_ORD(SALES_ORD_ID),
+    CONSTRAINT FK_SALES_ORD_LINE_PROD FOREIGN KEY (PROD_ID) REFERENCES PROD(PROD_ID)
+);
+COMMENT ON TABLE SALES_ORD_LINE IS &#x27;Product and purchase details captured on a sales order&#x27;;
+COMMENT ON COLUMN SALES_ORD_LINE.SALES_ORD_LINE_ID IS &#x27;unique identifier for a sales order line&#x27;;
+CREATE INDEX IDX_SALES_ORD_LINE_SALES_ORD ON SALES_ORD_LINE(SALES_ORD_ID);
+CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="oracle-country">
+
+                    <h2>
+                    Country
+                    (Oracle)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        CTRY
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_NAME</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        CTRY_CD
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        CUST
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        SALES_ORD
+                        (SHIPPING_CTRY_CD)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_CTRY_CUST</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_CTRY_SALES_ORD</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE CTRY (
+    CTRY_CD VARCHAR2(255) NOT NULL,
+    CTRY_NAME VARCHAR2(255) NOT NULL,
+    CONSTRAINT PK_CTRY PRIMARY KEY (CTRY_CD),
+    CONSTRAINT FK_CTRY_CUST FOREIGN KEY (CTRY_CD) REFERENCES CUST(CTRY_CD),
+    CONSTRAINT FK_CTRY_SALES_ORD FOREIGN KEY (CTRY_CD) REFERENCES SALES_ORD(SHIPPING_CTRY_CD)
+);
+COMMENT ON TABLE CTRY IS &#x27;Country lookup table&#x27;;
+CREATE INDEX IDX_CTRY_CUST ON CTRY(CTRY_CD);
+CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="oracle-customer">
+
+                    <h2>
+                    Customer
+                    (Oracle)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        CUST
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CUST_NAME</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>EMAIL_ADDRESS</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CREATED_AT</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        CUST_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>
+                        SALES_ORD
+                        (CUST_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        CTRY
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_CUST_SALES_ORD</td>
+                    <td>CUST_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_CUST_CTRY</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE CUST (
+    CUST_ID NUMBER NOT NULL,
+    CUST_NAME VARCHAR2(255) NOT NULL,
+    EMAIL_ADDRESS VARCHAR2(255),
+    CTRY_CD VARCHAR2(255) NOT NULL,
+    CREATED_AT VARCHAR2(255) NOT NULL,
+    CONSTRAINT PK_CUST PRIMARY KEY (CUST_ID),
+    CONSTRAINT FK_CUST_SALES_ORD FOREIGN KEY (CUST_ID) REFERENCES SALES_ORD(CUST_ID),
+    CONSTRAINT FK_CUST_CTRY FOREIGN KEY (CTRY_CD) REFERENCES CTRY(CTRY_CD)
+);
+COMMENT ON TABLE CUST IS &#x27;Customer master data&#x27;;
+COMMENT ON COLUMN CUST.CUST_ID IS &#x27;unique identifier for a customer&#x27;;
+CREATE INDEX IDX_CUST_SALES_ORD ON CUST(CUST_ID);
+CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="oracle-product">
+
+                    <h2>
+                    Product
+                    (Oracle)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        PROD
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SKU</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_NAME</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_STAT</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        PROD_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>
+                        SALES_ORD_LINE
+                        (PROD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_PROD_SALES_ORD_LINE</td>
+                    <td>PROD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE PROD (
+    PROD_ID NUMBER NOT NULL,
+    SKU VARCHAR2(255) NOT NULL,
+    PROD_NAME VARCHAR2(255) NOT NULL,
+    PROD_STAT VARCHAR2(255) NOT NULL,
+    CONSTRAINT PK_PROD PRIMARY KEY (PROD_ID),
+    CONSTRAINT FK_PROD_SALES_ORD_LINE FOREIGN KEY (PROD_ID) REFERENCES SALES_ORD_LINE(PROD_ID)
+);
+COMMENT ON TABLE PROD IS &#x27;Product catalogue&#x27;;
+COMMENT ON COLUMN PROD.PROD_ID IS &#x27;unique identifier for a product&#x27;;
+CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="oracle-salesorder">
+
+                    <h2>
+                    SalesOrder
+                    (Oracle)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        SALES_ORD
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>ORD_DT</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>ORD_STAT</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SHIPPING_CTRY_CD</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        SALES_ORD_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>
+                        CUST
+                        (CUST_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SHIPPING_CTRY_CD</td>
+                    <td>
+                        CTRY
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>
+                        SALES_ORD_LINE
+                        (SALES_ORD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_SALES_ORD_CUST</td>
+                    <td>CUST_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_CTRY</td>
+                    <td>SHIPPING_CTRY_CD</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_SALES_ORD_LINE</td>
+                    <td>SALES_ORD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE SALES_ORD (
+    SALES_ORD_ID NUMBER NOT NULL,
+    ORD_DT VARCHAR2(255) NOT NULL,
+    CUST_ID NUMBER NOT NULL,
+    ORD_STAT VARCHAR2(255) NOT NULL,
+    SHIPPING_CTRY_CD VARCHAR2(255) NOT NULL,
+    CONSTRAINT PK_SALES_ORD PRIMARY KEY (SALES_ORD_ID),
+    CONSTRAINT FK_SALES_ORD_CUST FOREIGN KEY (CUST_ID) REFERENCES CUST(CUST_ID),
+    CONSTRAINT FK_SALES_ORD_CTRY FOREIGN KEY (SHIPPING_CTRY_CD) REFERENCES CTRY(CTRY_CD),
+    CONSTRAINT FK_SALES_ORD_SALES_ORD_LINE FOREIGN KEY (SALES_ORD_ID) REFERENCES SALES_ORD_LINE(SALES_ORD_ID)
+);
+COMMENT ON TABLE SALES_ORD IS &#x27;Sales order header&#x27;;
+COMMENT ON COLUMN SALES_ORD.SALES_ORD_ID IS &#x27;unique identifier for a sales order&#x27;;
+CREATE INDEX IDX_SALES_ORD_CUST ON SALES_ORD(CUST_ID);
+CREATE INDEX IDX_SALES_ORD_CTRY ON SALES_ORD(SHIPPING_CTRY_CD);
+CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="oracle-salesorderline">
+
+                    <h2>
+                    SalesOrderLine
+                    (Oracle)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        SALES_ORD_LINE
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_LINE_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>LINE_NBR</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>QTY</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>UNIT_PRC</td>
+                    <td>VARCHAR2(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        SALES_ORD_LINE_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>
+                        SALES_ORD
+                        (SALES_ORD_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>
+                        PROD
+                        (PROD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_SALES_ORD_LINE_SALES_ORD</td>
+                    <td>SALES_ORD_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_LINE_PROD</td>
+                    <td>PROD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE SALES_ORD_LINE (
+    SALES_ORD_LINE_ID NUMBER NOT NULL,
+    SALES_ORD_ID NUMBER NOT NULL,
+    PROD_ID NUMBER NOT NULL,
+    LINE_NBR NUMBER NOT NULL,
+    QTY NUMBER NOT NULL,
+    UNIT_PRC VARCHAR2(255) NOT NULL,
+    CONSTRAINT PK_SALES_ORD_LINE PRIMARY KEY (SALES_ORD_LINE_ID),
+    CONSTRAINT FK_SALES_ORD_LINE_SALES_ORD FOREIGN KEY (SALES_ORD_ID) REFERENCES SALES_ORD(SALES_ORD_ID),
+    CONSTRAINT FK_SALES_ORD_LINE_PROD FOREIGN KEY (PROD_ID) REFERENCES PROD(PROD_ID)
+);
+COMMENT ON TABLE SALES_ORD_LINE IS &#x27;Product and purchase details captured on a sales order&#x27;;
+COMMENT ON COLUMN SALES_ORD_LINE.SALES_ORD_LINE_ID IS &#x27;unique identifier for a sales order line&#x27;;
+CREATE INDEX IDX_SALES_ORD_LINE_SALES_ORD ON SALES_ORD_LINE(SALES_ORD_ID);
+CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="sqlserver-country">
+
+                    <h2>
+                    Country
+                    (Sqlserver)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        CTRY
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_NAME</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        CTRY_CD
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        CUST
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        SALES_ORD
+                        (SHIPPING_CTRY_CD)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_CTRY_CUST</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_CTRY_SALES_ORD</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE CTRY (
+    CTRY_CD VARCHAR(255) NOT NULL,
+    CTRY_NAME VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_CTRY PRIMARY KEY (CTRY_CD),
+    CONSTRAINT FK_CTRY_CUST FOREIGN KEY (CTRY_CD) REFERENCES CUST(CTRY_CD),
+    CONSTRAINT FK_CTRY_SALES_ORD FOREIGN KEY (CTRY_CD) REFERENCES SALES_ORD(SHIPPING_CTRY_CD)
+);
+COMMENT ON TABLE CTRY IS &#x27;Country lookup table&#x27;;
+CREATE INDEX IDX_CTRY_CUST ON CTRY(CTRY_CD);
+CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="sqlserver-customer">
+
+                    <h2>
+                    Customer
+                    (Sqlserver)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        CUST
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CUST_NAME</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>EMAIL_ADDRESS</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CREATED_AT</td>
+                    <td>DATETIME2</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        CUST_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>
+                        SALES_ORD
+                        (CUST_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        CTRY
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_CUST_SALES_ORD</td>
+                    <td>CUST_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_CUST_CTRY</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE CUST (
+    CUST_ID BIGINT NOT NULL,
+    CUST_NAME VARCHAR(255) NOT NULL,
+    EMAIL_ADDRESS VARCHAR(255),
+    CTRY_CD VARCHAR(255) NOT NULL,
+    CREATED_AT DATETIME2 NOT NULL,
+    CONSTRAINT PK_CUST PRIMARY KEY (CUST_ID),
+    CONSTRAINT FK_CUST_SALES_ORD FOREIGN KEY (CUST_ID) REFERENCES SALES_ORD(CUST_ID),
+    CONSTRAINT FK_CUST_CTRY FOREIGN KEY (CTRY_CD) REFERENCES CTRY(CTRY_CD)
+);
+COMMENT ON TABLE CUST IS &#x27;Customer master data&#x27;;
+COMMENT ON COLUMN CUST.CUST_ID IS &#x27;unique identifier for a customer&#x27;;
+CREATE INDEX IDX_CUST_SALES_ORD ON CUST(CUST_ID);
+CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="sqlserver-product">
+
+                    <h2>
+                    Product
+                    (Sqlserver)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        PROD
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SKU</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_NAME</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_STAT</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        PROD_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>
+                        SALES_ORD_LINE
+                        (PROD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_PROD_SALES_ORD_LINE</td>
+                    <td>PROD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE PROD (
+    PROD_ID BIGINT NOT NULL,
+    SKU VARCHAR(255) NOT NULL,
+    PROD_NAME VARCHAR(255) NOT NULL,
+    PROD_STAT VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_PROD PRIMARY KEY (PROD_ID),
+    CONSTRAINT FK_PROD_SALES_ORD_LINE FOREIGN KEY (PROD_ID) REFERENCES SALES_ORD_LINE(PROD_ID)
+);
+COMMENT ON TABLE PROD IS &#x27;Product catalogue&#x27;;
+COMMENT ON COLUMN PROD.PROD_ID IS &#x27;unique identifier for a product&#x27;;
+CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="sqlserver-salesorder">
+
+                    <h2>
+                    SalesOrder
+                    (Sqlserver)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        SALES_ORD
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>ORD_DT</td>
+                    <td>DATETIME2</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>ORD_STAT</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SHIPPING_CTRY_CD</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        SALES_ORD_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>
+                        CUST
+                        (CUST_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SHIPPING_CTRY_CD</td>
+                    <td>
+                        CTRY
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>
+                        SALES_ORD_LINE
+                        (SALES_ORD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_SALES_ORD_CUST</td>
+                    <td>CUST_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_CTRY</td>
+                    <td>SHIPPING_CTRY_CD</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_SALES_ORD_LINE</td>
+                    <td>SALES_ORD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE SALES_ORD (
+    SALES_ORD_ID BIGINT NOT NULL,
+    ORD_DT DATETIME2 NOT NULL,
+    CUST_ID BIGINT NOT NULL,
+    ORD_STAT VARCHAR(255) NOT NULL,
+    SHIPPING_CTRY_CD VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_SALES_ORD PRIMARY KEY (SALES_ORD_ID),
+    CONSTRAINT FK_SALES_ORD_CUST FOREIGN KEY (CUST_ID) REFERENCES CUST(CUST_ID),
+    CONSTRAINT FK_SALES_ORD_CTRY FOREIGN KEY (SHIPPING_CTRY_CD) REFERENCES CTRY(CTRY_CD),
+    CONSTRAINT FK_SALES_ORD_SALES_ORD_LINE FOREIGN KEY (SALES_ORD_ID) REFERENCES SALES_ORD_LINE(SALES_ORD_ID)
+);
+COMMENT ON TABLE SALES_ORD IS &#x27;Sales order header&#x27;;
+COMMENT ON COLUMN SALES_ORD.SALES_ORD_ID IS &#x27;unique identifier for a sales order&#x27;;
+CREATE INDEX IDX_SALES_ORD_CUST ON SALES_ORD(CUST_ID);
+CREATE INDEX IDX_SALES_ORD_CTRY ON SALES_ORD(SHIPPING_CTRY_CD);
+CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="sqlserver-salesorderline">
+
+                    <h2>
+                    SalesOrderLine
+                    (Sqlserver)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        SALES_ORD_LINE
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_LINE_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>BIGINT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>LINE_NBR</td>
+                    <td>INT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>QTY</td>
+                    <td>INT</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>UNIT_PRC</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        SALES_ORD_LINE_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>
+                        SALES_ORD
+                        (SALES_ORD_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>
+                        PROD
+                        (PROD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_SALES_ORD_LINE_SALES_ORD</td>
+                    <td>SALES_ORD_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_LINE_PROD</td>
+                    <td>PROD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE SALES_ORD_LINE (
+    SALES_ORD_LINE_ID BIGINT NOT NULL,
+    SALES_ORD_ID BIGINT NOT NULL,
+    PROD_ID BIGINT NOT NULL,
+    LINE_NBR INT NOT NULL,
+    QTY INT NOT NULL,
+    UNIT_PRC VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_SALES_ORD_LINE PRIMARY KEY (SALES_ORD_LINE_ID),
+    CONSTRAINT FK_SALES_ORD_LINE_SALES_ORD FOREIGN KEY (SALES_ORD_ID) REFERENCES SALES_ORD(SALES_ORD_ID),
+    CONSTRAINT FK_SALES_ORD_LINE_PROD FOREIGN KEY (PROD_ID) REFERENCES PROD(PROD_ID)
+);
+COMMENT ON TABLE SALES_ORD_LINE IS &#x27;Product and purchase details captured on a sales order&#x27;;
+COMMENT ON COLUMN SALES_ORD_LINE.SALES_ORD_LINE_ID IS &#x27;unique identifier for a sales order line&#x27;;
+CREATE INDEX IDX_SALES_ORD_LINE_SALES_ORD ON SALES_ORD_LINE(SALES_ORD_ID);
+CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="snowflake-country">
+
+                    <h2>
+                    Country
+                    (Snowflake)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        CTRY
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_NAME</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        CTRY_CD
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        CUST
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        SALES_ORD
+                        (SHIPPING_CTRY_CD)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_CTRY_CUST</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_CTRY_SALES_ORD</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE CTRY (
+    CTRY_CD VARCHAR(255) NOT NULL,
+    CTRY_NAME VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_CTRY PRIMARY KEY (CTRY_CD),
+    CONSTRAINT FK_CTRY_CUST FOREIGN KEY (CTRY_CD) REFERENCES CUST(CTRY_CD),
+    CONSTRAINT FK_CTRY_SALES_ORD FOREIGN KEY (CTRY_CD) REFERENCES SALES_ORD(SHIPPING_CTRY_CD)
+);
+COMMENT ON TABLE CTRY IS &#x27;Country lookup table&#x27;;
+CREATE INDEX IDX_CTRY_CUST ON CTRY(CTRY_CD);
+CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="snowflake-customer">
+
+                    <h2>
+                    Customer
+                    (Snowflake)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        CUST
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CUST_NAME</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>EMAIL_ADDRESS</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CREATED_AT</td>
+                    <td>TIMESTAMP_NTZ</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        CUST_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>
+                        SALES_ORD
+                        (CUST_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CTRY_CD</td>
+                    <td>
+                        CTRY
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_CUST_SALES_ORD</td>
+                    <td>CUST_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_CUST_CTRY</td>
+                    <td>CTRY_CD</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE CUST (
+    CUST_ID NUMBER NOT NULL,
+    CUST_NAME VARCHAR(255) NOT NULL,
+    EMAIL_ADDRESS VARCHAR(255),
+    CTRY_CD VARCHAR(255) NOT NULL,
+    CREATED_AT TIMESTAMP_NTZ NOT NULL,
+    CONSTRAINT PK_CUST PRIMARY KEY (CUST_ID),
+    CONSTRAINT FK_CUST_SALES_ORD FOREIGN KEY (CUST_ID) REFERENCES SALES_ORD(CUST_ID),
+    CONSTRAINT FK_CUST_CTRY FOREIGN KEY (CTRY_CD) REFERENCES CTRY(CTRY_CD)
+);
+COMMENT ON TABLE CUST IS &#x27;Customer master data&#x27;;
+COMMENT ON COLUMN CUST.CUST_ID IS &#x27;unique identifier for a customer&#x27;;
+CREATE INDEX IDX_CUST_SALES_ORD ON CUST(CUST_ID);
+CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="snowflake-product">
+
+                    <h2>
+                    Product
+                    (Snowflake)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        PROD
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SKU</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_NAME</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_STAT</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        PROD_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>
+                        SALES_ORD_LINE
+                        (PROD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_PROD_SALES_ORD_LINE</td>
+                    <td>PROD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE PROD (
+    PROD_ID NUMBER NOT NULL,
+    SKU VARCHAR(255) NOT NULL,
+    PROD_NAME VARCHAR(255) NOT NULL,
+    PROD_STAT VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_PROD PRIMARY KEY (PROD_ID),
+    CONSTRAINT FK_PROD_SALES_ORD_LINE FOREIGN KEY (PROD_ID) REFERENCES SALES_ORD_LINE(PROD_ID)
+);
+COMMENT ON TABLE PROD IS &#x27;Product catalogue&#x27;;
+COMMENT ON COLUMN PROD.PROD_ID IS &#x27;unique identifier for a product&#x27;;
+CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="snowflake-salesorder">
+
+                    <h2>
+                    SalesOrder
+                    (Snowflake)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        SALES_ORD
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>ORD_DT</td>
+                    <td>TIMESTAMP_NTZ</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>ORD_STAT</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SHIPPING_CTRY_CD</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        SALES_ORD_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>CUST_ID</td>
+                    <td>
+                        CUST
+                        (CUST_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SHIPPING_CTRY_CD</td>
+                    <td>
+                        CTRY
+                        (CTRY_CD)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>
+                        SALES_ORD_LINE
+                        (SALES_ORD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_SALES_ORD_CUST</td>
+                    <td>CUST_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_CTRY</td>
+                    <td>SHIPPING_CTRY_CD</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_SALES_ORD_LINE</td>
+                    <td>SALES_ORD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE SALES_ORD (
+    SALES_ORD_ID NUMBER NOT NULL,
+    ORD_DT TIMESTAMP_NTZ NOT NULL,
+    CUST_ID NUMBER NOT NULL,
+    ORD_STAT VARCHAR(255) NOT NULL,
+    SHIPPING_CTRY_CD VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_SALES_ORD PRIMARY KEY (SALES_ORD_ID),
+    CONSTRAINT FK_SALES_ORD_CUST FOREIGN KEY (CUST_ID) REFERENCES CUST(CUST_ID),
+    CONSTRAINT FK_SALES_ORD_CTRY FOREIGN KEY (SHIPPING_CTRY_CD) REFERENCES CTRY(CTRY_CD),
+    CONSTRAINT FK_SALES_ORD_SALES_ORD_LINE FOREIGN KEY (SALES_ORD_ID) REFERENCES SALES_ORD_LINE(SALES_ORD_ID)
+);
+COMMENT ON TABLE SALES_ORD IS &#x27;Sales order header&#x27;;
+COMMENT ON COLUMN SALES_ORD.SALES_ORD_ID IS &#x27;unique identifier for a sales order&#x27;;
+CREATE INDEX IDX_SALES_ORD_CUST ON SALES_ORD(CUST_ID);
+CREATE INDEX IDX_SALES_ORD_CTRY ON SALES_ORD(SHIPPING_CTRY_CD);
+CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
+</pre>
+
+
+                </div>
+                
+                <div class="content-page"
+                    id="snowflake-salesorderline">
+
+                    <h2>
+                    SalesOrderLine
+                    (Snowflake)
+                    </h2>
+
+
+                    <h3>Table</h3>
+
+                    <p>
+                        <b>Name:</b>
+                        SALES_ORD_LINE
+                    </p>
+
+
+                    <h3>Columns</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Nullable?</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_LINE_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>NUMBER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>LINE_NBR</td>
+                    <td>INTEGER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>QTY</td>
+                    <td>INTEGER</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>UNIT_PRC</td>
+                    <td>VARCHAR(255)</td>
+                    <td>
+                        NOT NULL
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+
+                    <h3>Primary Key</h3>
+
+                    <p>
+                        SALES_ORD_LINE_ID
+                    </p>
+
+
+                    <h3>Foreign Keys</h3>
+
+                    <table>
+                        <tr>
+                            <th>Referenced Entity</th>
+                            <th>Relationship</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>SALES_ORD_ID</td>
+                    <td>
+                        SALES_ORD
+                        (SALES_ORD_ID)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>PROD_ID</td>
+                    <td>
+                        PROD
+                        (PROD_ID)
+                    </td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>Indexes</h3>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Column</th>
+                        </tr>
+
+                        
+                <tr>
+                    <td>IDX_SALES_ORD_LINE_SALES_ORD</td>
+                    <td>SALES_ORD_ID</td>
+                </tr>
+                
+                <tr>
+                    <td>IDX_SALES_ORD_LINE_PROD</td>
+                    <td>PROD_ID</td>
+                </tr>
+                
+
+                    </table>
+
+                    <h3>DDL</h3>
+
+                    <pre>CREATE TABLE SALES_ORD_LINE (
+    SALES_ORD_LINE_ID NUMBER NOT NULL,
+    SALES_ORD_ID NUMBER NOT NULL,
+    PROD_ID NUMBER NOT NULL,
+    LINE_NBR INTEGER NOT NULL,
+    QTY INTEGER NOT NULL,
+    UNIT_PRC VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_SALES_ORD_LINE PRIMARY KEY (SALES_ORD_LINE_ID),
+    CONSTRAINT FK_SALES_ORD_LINE_SALES_ORD FOREIGN KEY (SALES_ORD_ID) REFERENCES SALES_ORD(SALES_ORD_ID),
+    CONSTRAINT FK_SALES_ORD_LINE_PROD FOREIGN KEY (PROD_ID) REFERENCES PROD(PROD_ID)
+);
+COMMENT ON TABLE SALES_ORD_LINE IS &#x27;Product and purchase details captured on a sales order&#x27;;
+COMMENT ON COLUMN SALES_ORD_LINE.SALES_ORD_LINE_ID IS &#x27;unique identifier for a sales order line&#x27;;
+CREATE INDEX IDX_SALES_ORD_LINE_SALES_ORD ON SALES_ORD_LINE(SALES_ORD_ID);
+CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
+</pre>
+
+
+                </div>
+                
+
+</div>
+
+</div>
+
+</body>
+
+</html>

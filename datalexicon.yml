@@ -1,6 +1,7 @@
 name: my_project
 models_dir: models
 standards_dir: standards
+# The free tier supports only PostgreSQL; remove other dialect entries when using it.
 dialects:
   - postgres
   - oracle
