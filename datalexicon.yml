@@ -3,3 +3,6 @@ models_dir: models
 standards_dir: standards
 dialects:
   - postgres
+  - oracle
+  - sqlserver
+  - snowflake

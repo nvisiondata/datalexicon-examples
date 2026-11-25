@@ -1,0 +1,26 @@
+entity: Product
+description: Product catalogue
+attributes:
+  - name: ProductId
+    type: identifier
+    required: true
+    primary_key: true
+    description: unique identifier for a product
+  - name: SKU
+    type: text
+    length: 40
+    required: true
+  - name: ProductName
+    type: text
+    length: 200
+    required: true
+  - name: ProductStatus
+    type: text
+    length: 20
+    required: true
+
+relationships:
+  - entity: SalesOrderLine
+    type: one-to-many
+    source_attribute: ProductId
+    target_attribute: ProductId

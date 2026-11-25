@@ -1,20 +1,24 @@
-entity: Order
+entity: SalesOrder
 description: Sales order header
 attributes:
-  - name: OrderId
+  - name: SalesOrderId
     type: identifier
     required: true
     primary_key: true
-    description: unique identifier for an order
+    description: unique identifier for a sales order
   - name: OrderDate
     type: datetime
     required: true
   - name: CustomerId
     type: identifier
     required: true
-  - name: CountryCode
+  - name: OrderStatus
     type: text
-    length: 10
+    length: 20
+    required: true
+  - name: ShippingCountryCode
+    type: text
+    length: 2
     required: true
 
 relationships:
@@ -24,5 +28,9 @@ relationships:
     target_attribute: CustomerId
   - entity: Country
     type: many-to-one
-    source_attribute: CountryCode
+    source_attribute: ShippingCountryCode
     target_attribute: CountryCode
+  - entity: SalesOrderLine
+    type: one-to-many
+    source_attribute: SalesOrderId
+    target_attribute: SalesOrderId

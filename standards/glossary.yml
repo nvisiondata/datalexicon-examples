@@ -1,3 +1,6 @@
 terms:
-  Customer: Customer master data
-  Order: Customer order information
+  Customer: A person or organization that places sales orders
+  Country: A country identified by its two-letter country code
+  Product: An item available for sale
+  SalesOrder: A customer's request to purchase products
+  SalesOrderLine: A product, quantity, and price recorded on a sales order

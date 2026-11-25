@@ -1,0 +1,33 @@
+entity: SalesOrderLine
+description: Product and purchase details captured on a sales order
+attributes:
+  - name: SalesOrderLineId
+    type: identifier
+    required: true
+    primary_key: true
+    description: unique identifier for a sales order line
+  - name: SalesOrderId
+    type: identifier
+    required: true
+  - name: ProductId
+    type: identifier
+    required: true
+  - name: LineNumber
+    type: integer
+    required: true
+  - name: Quantity
+    type: integer
+    required: true
+  - name: UnitPrice
+    type: decimal
+    required: true
+
+relationships:
+  - entity: SalesOrder
+    type: many-to-one
+    source_attribute: SalesOrderId
+    target_attribute: SalesOrderId
+  - entity: Product
+    type: many-to-one
+    source_attribute: ProductId
+    target_attribute: ProductId

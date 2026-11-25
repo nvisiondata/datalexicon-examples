@@ -9,13 +9,20 @@ attributes:
   - name: CustomerName
     type: text
     length: 200
+    required: true
+  - name: EmailAddress
+    type: text
+    length: 254
   - name: CountryCode
     type: text
-    length: 10
+    length: 2
+    required: true
+  - name: CreatedAt
+    type: datetime
     required: true
 
 relationships:
-  - entity: Order
+  - entity: SalesOrder
     type: one-to-many
     source_attribute: CustomerId
     target_attribute: CustomerId

@@ -3,11 +3,20 @@ description: Country lookup table
 attributes:
   - name: CountryCode
     type: text
-    length: 10
+    length: 2
     required: true
     primary_key: true
   - name: CountryName
     type: text
     length: 100
+    required: true
 
-relationships: []
+relationships:
+  - entity: Customer
+    type: one-to-many
+    source_attribute: CountryCode
+    target_attribute: CountryCode
+  - entity: SalesOrder
+    type: one-to-many
+    source_attribute: CountryCode
+    target_attribute: ShippingCountryCode
