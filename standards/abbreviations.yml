@@ -1,13 +1,9 @@
 abbreviations:
-  Customer: CUST
   Number: NBR
   Identifier: ID
-  Order: ORD
-  Line: LINE
-  Product: PROD
+  Line: LN
   Quantity: QTY
   Price: PRC
-  Country: CTRY
   Code: CD
   Status: STAT
   Date: DT

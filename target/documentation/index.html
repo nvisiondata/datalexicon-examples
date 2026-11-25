@@ -696,11 +696,6 @@ Physical Entities
 
                     
             <tr>
-                <td>Customer</td>
-                <td>CUST</td>
-            </tr>
-            
-            <tr>
                 <td>Number</td>
                 <td>NBR</td>
             </tr>
@@ -711,18 +706,8 @@ Physical Entities
             </tr>
             
             <tr>
-                <td>Order</td>
-                <td>ORD</td>
-            </tr>
-            
-            <tr>
                 <td>Line</td>
-                <td>LINE</td>
-            </tr>
-            
-            <tr>
-                <td>Product</td>
-                <td>PROD</td>
+                <td>LN</td>
             </tr>
             
             <tr>
@@ -733,11 +718,6 @@ Physical Entities
             <tr>
                 <td>Price</td>
                 <td>PRC</td>
-            </tr>
-            
-            <tr>
-                <td>Country</td>
-                <td>CTRY</td>
             </tr>
             
             <tr>
@@ -815,7 +795,7 @@ Physical Entities
 
                     <p>
                         <b>Name:</b>
-                        CTRY
+                        COUNTRY
                     </p>
 
 
@@ -830,7 +810,7 @@ Physical Entities
 
                         
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>TEXT</td>
                     <td>
                         NOT NULL
@@ -838,7 +818,7 @@ Physical Entities
                 </tr>
                 
                 <tr>
-                    <td>CTRY_NAME</td>
+                    <td>COUNTRY_NAME</td>
                     <td>TEXT</td>
                     <td>
                         NOT NULL
@@ -852,7 +832,7 @@ Physical Entities
                     <h3>Primary Key</h3>
 
                     <p>
-                        CTRY_CD
+                        COUNTRY_CD
                     </p>
 
 
@@ -866,18 +846,18 @@ Physical Entities
 
                         
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        CUST
-                        (CTRY_CD)
+                        CUSTOMER
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        SALES_ORD
-                        (SHIPPING_CTRY_CD)
+                        SALES_ORDER
+                        (SHIPPING_COUNTRY_CD)
                     </td>
                 </tr>
                 
@@ -894,13 +874,13 @@ Physical Entities
 
                         
                 <tr>
-                    <td>IDX_CTRY_CUST</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_COUNTRY_CUSTOMER</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_CTRY_SALES_ORD</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_COUNTRY_SALES_ORDER</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
 
@@ -936,7 +916,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                     <p>
                         <b>Name:</b>
-                        CUST
+                        CUSTOMER
                     </p>
 
 
@@ -951,7 +931,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -959,7 +939,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>CUST_NAME</td>
+                    <td>CUSTOMER_NAME</td>
                     <td>TEXT</td>
                     <td>
                         NOT NULL
@@ -975,7 +955,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>TEXT</td>
                     <td>
                         NOT NULL
@@ -997,7 +977,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                     <h3>Primary Key</h3>
 
                     <p>
-                        CUST_ID
+                        CUSTOMER_ID
                     </p>
 
 
@@ -1011,18 +991,18 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>
-                        SALES_ORD
-                        (CUST_ID)
+                        SALES_ORDER
+                        (CUSTOMER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        CTRY
-                        (CTRY_CD)
+                        COUNTRY
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
@@ -1039,13 +1019,13 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>IDX_CUST_SALES_ORD</td>
-                    <td>CUST_ID</td>
+                    <td>IDX_CUSTOMER_SALES_ORDER</td>
+                    <td>CUSTOMER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_CUST_CTRY</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_CUSTOMER_COUNTRY</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
 
@@ -1085,7 +1065,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                     <p>
                         <b>Name:</b>
-                        PROD
+                        PRODUCT
                     </p>
 
 
@@ -1100,7 +1080,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -1116,7 +1096,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>PROD_NAME</td>
+                    <td>PRODUCT_NAME</td>
                     <td>TEXT</td>
                     <td>
                         NOT NULL
@@ -1124,7 +1104,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>PROD_STAT</td>
+                    <td>PRODUCT_STAT</td>
                     <td>TEXT</td>
                     <td>
                         NOT NULL
@@ -1138,7 +1118,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                     <h3>Primary Key</h3>
 
                     <p>
-                        PROD_ID
+                        PRODUCT_ID
                     </p>
 
 
@@ -1152,10 +1132,10 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>
-                        SALES_ORD_LINE
-                        (PROD_ID)
+                        SALES_ORDER_LN
+                        (PRODUCT_ID)
                     </td>
                 </tr>
                 
@@ -1172,8 +1152,8 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>IDX_PROD_SALES_ORD_LINE</td>
-                    <td>PROD_ID</td>
+                    <td>IDX_PRODUCT_SALES_ORDER_LN</td>
+                    <td>PRODUCT_ID</td>
                 </tr>
                 
 
@@ -1210,7 +1190,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                     <p>
                         <b>Name:</b>
-                        SALES_ORD
+                        SALES_ORDER
                     </p>
 
 
@@ -1225,7 +1205,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -1233,7 +1213,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>ORD_DT</td>
+                    <td>ORDER_DT</td>
                     <td>TIMESTAMP</td>
                     <td>
                         NOT NULL
@@ -1241,7 +1221,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -1249,7 +1229,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>ORD_STAT</td>
+                    <td>ORDER_STAT</td>
                     <td>TEXT</td>
                     <td>
                         NOT NULL
@@ -1257,7 +1237,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                     <td>TEXT</td>
                     <td>
                         NOT NULL
@@ -1271,7 +1251,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        SALES_ORD_ID
+                        SALES_ORDER_ID
                     </p>
 
 
@@ -1285,26 +1265,26 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>
-                        CUST
-                        (CUST_ID)
+                        CUSTOMER
+                        (CUSTOMER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                     <td>
-                        CTRY
-                        (CTRY_CD)
+                        COUNTRY
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>
-                        SALES_ORD_LINE
-                        (SALES_ORD_ID)
+                        SALES_ORDER_LN
+                        (SALES_ORDER_ID)
                     </td>
                 </tr>
                 
@@ -1321,18 +1301,18 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>IDX_SALES_ORD_CUST</td>
-                    <td>CUST_ID</td>
+                    <td>IDX_SALES_ORDER_CUSTOMER</td>
+                    <td>CUSTOMER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_CTRY</td>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>IDX_SALES_ORDER_COUNTRY</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_SALES_ORD_LINE</td>
-                    <td>SALES_ORD_ID</td>
+                    <td>IDX_SALES_ORDER_SALES_ORDER_LN</td>
+                    <td>SALES_ORDER_ID</td>
                 </tr>
                 
 
@@ -1374,7 +1354,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                     <p>
                         <b>Name:</b>
-                        SALES_ORD_LINE
+                        SALES_ORDER_LN
                     </p>
 
 
@@ -1389,7 +1369,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_LINE_ID</td>
+                    <td>SALES_ORDER_LN_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -1397,7 +1377,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -1405,7 +1385,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -1413,7 +1393,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>LINE_NBR</td>
+                    <td>LN_NBR</td>
                     <td>INTEGER</td>
                     <td>
                         NOT NULL
@@ -1443,7 +1423,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        SALES_ORD_LINE_ID
+                        SALES_ORDER_LN_ID
                     </p>
 
 
@@ -1457,18 +1437,18 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>
-                        SALES_ORD
-                        (SALES_ORD_ID)
+                        SALES_ORDER
+                        (SALES_ORDER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>
-                        PROD
-                        (PROD_ID)
+                        PRODUCT
+                        (PRODUCT_ID)
                     </td>
                 </tr>
                 
@@ -1485,13 +1465,13 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>IDX_SALES_ORD_LINE_SALES_ORD</td>
-                    <td>SALES_ORD_ID</td>
+                    <td>IDX_SALES_ORDER_LN_SALES_ORDER</td>
+                    <td>SALES_ORDER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_LINE_PROD</td>
-                    <td>PROD_ID</td>
+                    <td>IDX_SALES_ORDER_LN_PRODUCT</td>
+                    <td>PRODUCT_ID</td>
                 </tr>
                 
 
@@ -1532,7 +1512,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                     <p>
                         <b>Name:</b>
-                        CTRY
+                        COUNTRY
                     </p>
 
 
@@ -1547,7 +1527,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                         
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>VARCHAR2(255)</td>
                     <td>
                         NOT NULL
@@ -1555,7 +1535,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>CTRY_NAME</td>
+                    <td>COUNTRY_NAME</td>
                     <td>VARCHAR2(255)</td>
                     <td>
                         NOT NULL
@@ -1569,7 +1549,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        CTRY_CD
+                        COUNTRY_CD
                     </p>
 
 
@@ -1583,18 +1563,18 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                         
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        CUST
-                        (CTRY_CD)
+                        CUSTOMER
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        SALES_ORD
-                        (SHIPPING_CTRY_CD)
+                        SALES_ORDER
+                        (SHIPPING_COUNTRY_CD)
                     </td>
                 </tr>
                 
@@ -1611,13 +1591,13 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                         
                 <tr>
-                    <td>IDX_CTRY_CUST</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_COUNTRY_CUSTOMER</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_CTRY_SALES_ORD</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_COUNTRY_SALES_ORDER</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
 
@@ -1653,7 +1633,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                     <p>
                         <b>Name:</b>
-                        CUST
+                        CUSTOMER
                     </p>
 
 
@@ -1668,7 +1648,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -1676,7 +1656,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>CUST_NAME</td>
+                    <td>CUSTOMER_NAME</td>
                     <td>VARCHAR2(255)</td>
                     <td>
                         NOT NULL
@@ -1692,7 +1672,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>VARCHAR2(255)</td>
                     <td>
                         NOT NULL
@@ -1714,7 +1694,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                     <h3>Primary Key</h3>
 
                     <p>
-                        CUST_ID
+                        CUSTOMER_ID
                     </p>
 
 
@@ -1728,18 +1708,18 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>
-                        SALES_ORD
-                        (CUST_ID)
+                        SALES_ORDER
+                        (CUSTOMER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        CTRY
-                        (CTRY_CD)
+                        COUNTRY
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
@@ -1756,13 +1736,13 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>IDX_CUST_SALES_ORD</td>
-                    <td>CUST_ID</td>
+                    <td>IDX_CUSTOMER_SALES_ORDER</td>
+                    <td>CUSTOMER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_CUST_CTRY</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_CUSTOMER_COUNTRY</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
 
@@ -1802,7 +1782,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                     <p>
                         <b>Name:</b>
-                        PROD
+                        PRODUCT
                     </p>
 
 
@@ -1817,7 +1797,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -1833,7 +1813,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>PROD_NAME</td>
+                    <td>PRODUCT_NAME</td>
                     <td>VARCHAR2(255)</td>
                     <td>
                         NOT NULL
@@ -1841,7 +1821,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>PROD_STAT</td>
+                    <td>PRODUCT_STAT</td>
                     <td>VARCHAR2(255)</td>
                     <td>
                         NOT NULL
@@ -1855,7 +1835,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                     <h3>Primary Key</h3>
 
                     <p>
-                        PROD_ID
+                        PRODUCT_ID
                     </p>
 
 
@@ -1869,10 +1849,10 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>
-                        SALES_ORD_LINE
-                        (PROD_ID)
+                        SALES_ORDER_LN
+                        (PRODUCT_ID)
                     </td>
                 </tr>
                 
@@ -1889,8 +1869,8 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>IDX_PROD_SALES_ORD_LINE</td>
-                    <td>PROD_ID</td>
+                    <td>IDX_PRODUCT_SALES_ORDER_LN</td>
+                    <td>PRODUCT_ID</td>
                 </tr>
                 
 
@@ -1927,7 +1907,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                     <p>
                         <b>Name:</b>
-                        SALES_ORD
+                        SALES_ORDER
                     </p>
 
 
@@ -1942,7 +1922,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -1950,7 +1930,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>ORD_DT</td>
+                    <td>ORDER_DT</td>
                     <td>VARCHAR2(255)</td>
                     <td>
                         NOT NULL
@@ -1958,7 +1938,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -1966,7 +1946,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>ORD_STAT</td>
+                    <td>ORDER_STAT</td>
                     <td>VARCHAR2(255)</td>
                     <td>
                         NOT NULL
@@ -1974,7 +1954,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                     <td>VARCHAR2(255)</td>
                     <td>
                         NOT NULL
@@ -1988,7 +1968,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        SALES_ORD_ID
+                        SALES_ORDER_ID
                     </p>
 
 
@@ -2002,26 +1982,26 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>
-                        CUST
-                        (CUST_ID)
+                        CUSTOMER
+                        (CUSTOMER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                     <td>
-                        CTRY
-                        (CTRY_CD)
+                        COUNTRY
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>
-                        SALES_ORD_LINE
-                        (SALES_ORD_ID)
+                        SALES_ORDER_LN
+                        (SALES_ORDER_ID)
                     </td>
                 </tr>
                 
@@ -2038,18 +2018,18 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>IDX_SALES_ORD_CUST</td>
-                    <td>CUST_ID</td>
+                    <td>IDX_SALES_ORDER_CUSTOMER</td>
+                    <td>CUSTOMER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_CTRY</td>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>IDX_SALES_ORDER_COUNTRY</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_SALES_ORD_LINE</td>
-                    <td>SALES_ORD_ID</td>
+                    <td>IDX_SALES_ORDER_SALES_ORDER_LN</td>
+                    <td>SALES_ORDER_ID</td>
                 </tr>
                 
 
@@ -2091,7 +2071,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                     <p>
                         <b>Name:</b>
-                        SALES_ORD_LINE
+                        SALES_ORDER_LN
                     </p>
 
 
@@ -2106,7 +2086,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_LINE_ID</td>
+                    <td>SALES_ORDER_LN_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -2114,7 +2094,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -2122,7 +2102,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -2130,7 +2110,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>LINE_NBR</td>
+                    <td>LN_NBR</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -2160,7 +2140,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        SALES_ORD_LINE_ID
+                        SALES_ORDER_LN_ID
                     </p>
 
 
@@ -2174,18 +2154,18 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>
-                        SALES_ORD
-                        (SALES_ORD_ID)
+                        SALES_ORDER
+                        (SALES_ORDER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>
-                        PROD
-                        (PROD_ID)
+                        PRODUCT
+                        (PRODUCT_ID)
                     </td>
                 </tr>
                 
@@ -2202,13 +2182,13 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>IDX_SALES_ORD_LINE_SALES_ORD</td>
-                    <td>SALES_ORD_ID</td>
+                    <td>IDX_SALES_ORDER_LN_SALES_ORDER</td>
+                    <td>SALES_ORDER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_LINE_PROD</td>
-                    <td>PROD_ID</td>
+                    <td>IDX_SALES_ORDER_LN_PRODUCT</td>
+                    <td>PRODUCT_ID</td>
                 </tr>
                 
 
@@ -2249,7 +2229,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                     <p>
                         <b>Name:</b>
-                        CTRY
+                        COUNTRY
                     </p>
 
 
@@ -2264,7 +2244,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                         
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -2272,7 +2252,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>CTRY_NAME</td>
+                    <td>COUNTRY_NAME</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -2286,7 +2266,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        CTRY_CD
+                        COUNTRY_CD
                     </p>
 
 
@@ -2300,18 +2280,18 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                         
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        CUST
-                        (CTRY_CD)
+                        CUSTOMER
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        SALES_ORD
-                        (SHIPPING_CTRY_CD)
+                        SALES_ORDER
+                        (SHIPPING_COUNTRY_CD)
                     </td>
                 </tr>
                 
@@ -2328,13 +2308,13 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                         
                 <tr>
-                    <td>IDX_CTRY_CUST</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_COUNTRY_CUSTOMER</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_CTRY_SALES_ORD</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_COUNTRY_SALES_ORDER</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
 
@@ -2370,7 +2350,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                     <p>
                         <b>Name:</b>
-                        CUST
+                        CUSTOMER
                     </p>
 
 
@@ -2385,7 +2365,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -2393,7 +2373,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>CUST_NAME</td>
+                    <td>CUSTOMER_NAME</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -2409,7 +2389,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -2431,7 +2411,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                     <h3>Primary Key</h3>
 
                     <p>
-                        CUST_ID
+                        CUSTOMER_ID
                     </p>
 
 
@@ -2445,18 +2425,18 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>
-                        SALES_ORD
-                        (CUST_ID)
+                        SALES_ORDER
+                        (CUSTOMER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        CTRY
-                        (CTRY_CD)
+                        COUNTRY
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
@@ -2473,13 +2453,13 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>IDX_CUST_SALES_ORD</td>
-                    <td>CUST_ID</td>
+                    <td>IDX_CUSTOMER_SALES_ORDER</td>
+                    <td>CUSTOMER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_CUST_CTRY</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_CUSTOMER_COUNTRY</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
 
@@ -2519,7 +2499,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                     <p>
                         <b>Name:</b>
-                        PROD
+                        PRODUCT
                     </p>
 
 
@@ -2534,7 +2514,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -2550,7 +2530,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>PROD_NAME</td>
+                    <td>PRODUCT_NAME</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -2558,7 +2538,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>PROD_STAT</td>
+                    <td>PRODUCT_STAT</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -2572,7 +2552,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                     <h3>Primary Key</h3>
 
                     <p>
-                        PROD_ID
+                        PRODUCT_ID
                     </p>
 
 
@@ -2586,10 +2566,10 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>
-                        SALES_ORD_LINE
-                        (PROD_ID)
+                        SALES_ORDER_LN
+                        (PRODUCT_ID)
                     </td>
                 </tr>
                 
@@ -2606,8 +2586,8 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>IDX_PROD_SALES_ORD_LINE</td>
-                    <td>PROD_ID</td>
+                    <td>IDX_PRODUCT_SALES_ORDER_LN</td>
+                    <td>PRODUCT_ID</td>
                 </tr>
                 
 
@@ -2644,7 +2624,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                     <p>
                         <b>Name:</b>
-                        SALES_ORD
+                        SALES_ORDER
                     </p>
 
 
@@ -2659,7 +2639,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -2667,7 +2647,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>ORD_DT</td>
+                    <td>ORDER_DT</td>
                     <td>DATETIME2</td>
                     <td>
                         NOT NULL
@@ -2675,7 +2655,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -2683,7 +2663,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>ORD_STAT</td>
+                    <td>ORDER_STAT</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -2691,7 +2671,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -2705,7 +2685,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        SALES_ORD_ID
+                        SALES_ORDER_ID
                     </p>
 
 
@@ -2719,26 +2699,26 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>
-                        CUST
-                        (CUST_ID)
+                        CUSTOMER
+                        (CUSTOMER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                     <td>
-                        CTRY
-                        (CTRY_CD)
+                        COUNTRY
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>
-                        SALES_ORD_LINE
-                        (SALES_ORD_ID)
+                        SALES_ORDER_LN
+                        (SALES_ORDER_ID)
                     </td>
                 </tr>
                 
@@ -2755,18 +2735,18 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>IDX_SALES_ORD_CUST</td>
-                    <td>CUST_ID</td>
+                    <td>IDX_SALES_ORDER_CUSTOMER</td>
+                    <td>CUSTOMER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_CTRY</td>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>IDX_SALES_ORDER_COUNTRY</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_SALES_ORD_LINE</td>
-                    <td>SALES_ORD_ID</td>
+                    <td>IDX_SALES_ORDER_SALES_ORDER_LN</td>
+                    <td>SALES_ORDER_ID</td>
                 </tr>
                 
 
@@ -2808,7 +2788,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                     <p>
                         <b>Name:</b>
-                        SALES_ORD_LINE
+                        SALES_ORDER_LN
                     </p>
 
 
@@ -2823,7 +2803,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_LINE_ID</td>
+                    <td>SALES_ORDER_LN_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -2831,7 +2811,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -2839,7 +2819,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>BIGINT</td>
                     <td>
                         NOT NULL
@@ -2847,7 +2827,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>LINE_NBR</td>
+                    <td>LN_NBR</td>
                     <td>INT</td>
                     <td>
                         NOT NULL
@@ -2877,7 +2857,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        SALES_ORD_LINE_ID
+                        SALES_ORDER_LN_ID
                     </p>
 
 
@@ -2891,18 +2871,18 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>
-                        SALES_ORD
-                        (SALES_ORD_ID)
+                        SALES_ORDER
+                        (SALES_ORDER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>
-                        PROD
-                        (PROD_ID)
+                        PRODUCT
+                        (PRODUCT_ID)
                     </td>
                 </tr>
                 
@@ -2919,13 +2899,13 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>IDX_SALES_ORD_LINE_SALES_ORD</td>
-                    <td>SALES_ORD_ID</td>
+                    <td>IDX_SALES_ORDER_LN_SALES_ORDER</td>
+                    <td>SALES_ORDER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_LINE_PROD</td>
-                    <td>PROD_ID</td>
+                    <td>IDX_SALES_ORDER_LN_PRODUCT</td>
+                    <td>PRODUCT_ID</td>
                 </tr>
                 
 
@@ -2966,7 +2946,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                     <p>
                         <b>Name:</b>
-                        CTRY
+                        COUNTRY
                     </p>
 
 
@@ -2981,7 +2961,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                         
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -2989,7 +2969,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>CTRY_NAME</td>
+                    <td>COUNTRY_NAME</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -3003,7 +2983,7 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        CTRY_CD
+                        COUNTRY_CD
                     </p>
 
 
@@ -3017,18 +2997,18 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                         
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        CUST
-                        (CTRY_CD)
+                        CUSTOMER
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        SALES_ORD
-                        (SHIPPING_CTRY_CD)
+                        SALES_ORDER
+                        (SHIPPING_COUNTRY_CD)
                     </td>
                 </tr>
                 
@@ -3045,13 +3025,13 @@ CREATE INDEX IDX_SALES_ORD_LINE_PROD ON SALES_ORD_LINE(PROD_ID);
 
                         
                 <tr>
-                    <td>IDX_CTRY_CUST</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_COUNTRY_CUSTOMER</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_CTRY_SALES_ORD</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_COUNTRY_SALES_ORDER</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
 
@@ -3087,7 +3067,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                     <p>
                         <b>Name:</b>
-                        CUST
+                        CUSTOMER
                     </p>
 
 
@@ -3102,7 +3082,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -3110,7 +3090,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>CUST_NAME</td>
+                    <td>CUSTOMER_NAME</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -3126,7 +3106,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -3148,7 +3128,7 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
                     <h3>Primary Key</h3>
 
                     <p>
-                        CUST_ID
+                        CUSTOMER_ID
                     </p>
 
 
@@ -3162,18 +3142,18 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>
-                        SALES_ORD
-                        (CUST_ID)
+                        SALES_ORDER
+                        (CUSTOMER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>CTRY_CD</td>
+                    <td>COUNTRY_CD</td>
                     <td>
-                        CTRY
-                        (CTRY_CD)
+                        COUNTRY
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
@@ -3190,13 +3170,13 @@ CREATE INDEX IDX_CTRY_SALES_ORD ON CTRY(CTRY_CD);
 
                         
                 <tr>
-                    <td>IDX_CUST_SALES_ORD</td>
-                    <td>CUST_ID</td>
+                    <td>IDX_CUSTOMER_SALES_ORDER</td>
+                    <td>CUSTOMER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_CUST_CTRY</td>
-                    <td>CTRY_CD</td>
+                    <td>IDX_CUSTOMER_COUNTRY</td>
+                    <td>COUNTRY_CD</td>
                 </tr>
                 
 
@@ -3236,7 +3216,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                     <p>
                         <b>Name:</b>
-                        PROD
+                        PRODUCT
                     </p>
 
 
@@ -3251,7 +3231,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -3267,7 +3247,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>PROD_NAME</td>
+                    <td>PRODUCT_NAME</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -3275,7 +3255,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                 </tr>
                 
                 <tr>
-                    <td>PROD_STAT</td>
+                    <td>PRODUCT_STAT</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -3289,7 +3269,7 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
                     <h3>Primary Key</h3>
 
                     <p>
-                        PROD_ID
+                        PRODUCT_ID
                     </p>
 
 
@@ -3303,10 +3283,10 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>
-                        SALES_ORD_LINE
-                        (PROD_ID)
+                        SALES_ORDER_LN
+                        (PRODUCT_ID)
                     </td>
                 </tr>
                 
@@ -3323,8 +3303,8 @@ CREATE INDEX IDX_CUST_CTRY ON CUST(CTRY_CD);
 
                         
                 <tr>
-                    <td>IDX_PROD_SALES_ORD_LINE</td>
-                    <td>PROD_ID</td>
+                    <td>IDX_PRODUCT_SALES_ORDER_LN</td>
+                    <td>PRODUCT_ID</td>
                 </tr>
                 
 
@@ -3361,7 +3341,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                     <p>
                         <b>Name:</b>
-                        SALES_ORD
+                        SALES_ORDER
                     </p>
 
 
@@ -3376,7 +3356,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -3384,7 +3364,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>ORD_DT</td>
+                    <td>ORDER_DT</td>
                     <td>TIMESTAMP_NTZ</td>
                     <td>
                         NOT NULL
@@ -3392,7 +3372,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -3400,7 +3380,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>ORD_STAT</td>
+                    <td>ORDER_STAT</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -3408,7 +3388,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                 </tr>
                 
                 <tr>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                     <td>VARCHAR(255)</td>
                     <td>
                         NOT NULL
@@ -3422,7 +3402,7 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        SALES_ORD_ID
+                        SALES_ORDER_ID
                     </p>
 
 
@@ -3436,26 +3416,26 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>CUST_ID</td>
+                    <td>CUSTOMER_ID</td>
                     <td>
-                        CUST
-                        (CUST_ID)
+                        CUSTOMER
+                        (CUSTOMER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                     <td>
-                        CTRY
-                        (CTRY_CD)
+                        COUNTRY
+                        (COUNTRY_CD)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>
-                        SALES_ORD_LINE
-                        (SALES_ORD_ID)
+                        SALES_ORDER_LN
+                        (SALES_ORDER_ID)
                     </td>
                 </tr>
                 
@@ -3472,18 +3452,18 @@ CREATE INDEX IDX_PROD_SALES_ORD_LINE ON PROD(PROD_ID);
 
                         
                 <tr>
-                    <td>IDX_SALES_ORD_CUST</td>
-                    <td>CUST_ID</td>
+                    <td>IDX_SALES_ORDER_CUSTOMER</td>
+                    <td>CUSTOMER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_CTRY</td>
-                    <td>SHIPPING_CTRY_CD</td>
+                    <td>IDX_SALES_ORDER_COUNTRY</td>
+                    <td>SHIPPING_COUNTRY_CD</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_SALES_ORD_LINE</td>
-                    <td>SALES_ORD_ID</td>
+                    <td>IDX_SALES_ORDER_SALES_ORDER_LN</td>
+                    <td>SALES_ORDER_ID</td>
                 </tr>
                 
 
@@ -3525,7 +3505,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                     <p>
                         <b>Name:</b>
-                        SALES_ORD_LINE
+                        SALES_ORDER_LN
                     </p>
 
 
@@ -3540,7 +3520,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_LINE_ID</td>
+                    <td>SALES_ORDER_LN_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -3548,7 +3528,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -3556,7 +3536,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>NUMBER</td>
                     <td>
                         NOT NULL
@@ -3564,7 +3544,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                 </tr>
                 
                 <tr>
-                    <td>LINE_NBR</td>
+                    <td>LN_NBR</td>
                     <td>INTEGER</td>
                     <td>
                         NOT NULL
@@ -3594,7 +3574,7 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
                     <h3>Primary Key</h3>
 
                     <p>
-                        SALES_ORD_LINE_ID
+                        SALES_ORDER_LN_ID
                     </p>
 
 
@@ -3608,18 +3588,18 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>SALES_ORD_ID</td>
+                    <td>SALES_ORDER_ID</td>
                     <td>
-                        SALES_ORD
-                        (SALES_ORD_ID)
+                        SALES_ORDER
+                        (SALES_ORDER_ID)
                     </td>
                 </tr>
                 
                 <tr>
-                    <td>PROD_ID</td>
+                    <td>PRODUCT_ID</td>
                     <td>
-                        PROD
-                        (PROD_ID)
+                        PRODUCT
+                        (PRODUCT_ID)
                     </td>
                 </tr>
                 
@@ -3636,13 +3616,13 @@ CREATE INDEX IDX_SALES_ORD_SALES_ORD_LINE ON SALES_ORD(SALES_ORD_ID);
 
                         
                 <tr>
-                    <td>IDX_SALES_ORD_LINE_SALES_ORD</td>
-                    <td>SALES_ORD_ID</td>
+                    <td>IDX_SALES_ORDER_LN_SALES_ORDER</td>
+                    <td>SALES_ORDER_ID</td>
                 </tr>
                 
                 <tr>
-                    <td>IDX_SALES_ORD_LINE_PROD</td>
-                    <td>PROD_ID</td>
+                    <td>IDX_SALES_ORDER_LN_PRODUCT</td>
+                    <td>PRODUCT_ID</td>
                 </tr>
                 
 
